@@ -12,11 +12,13 @@ public class Main {
             FileRead ff = new FileRead();
 
             List<String> menu
-                    = new ArrayList<>(ff.readMenu("C://Users/admin/IdeaProjects/Pizzeria/src/Logic/Pizzeria.txt"));
+                    = new ArrayList<>(ff.readByAnchors("Pizzeria.txt",
+                    "-menu" , "--menu"));
             System.out.println(menu);
 
             List<String> order
-                    = new ArrayList<>(ff.readOrder("C://Users/admin/IdeaProjects/Pizzeria/src/Logic/Pizzeria.txt"));
+                    = new ArrayList<>(ff.readByAnchors("Pizzeria.txt",
+                    "-orders", "--orders"));
             System.out.println(order);
 
         }

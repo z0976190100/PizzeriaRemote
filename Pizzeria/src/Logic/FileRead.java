@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class FileRead {
 
 
-
     public static void myFileWriter(String fileName, String userInput) throws Exception {
 
         try (FileWriter fw = new FileWriter(fileName, false)) {
@@ -38,8 +37,9 @@ public class FileRead {
 
     }
 
-                                                                        //method reads menu text from file
-    public List<String> readMenu(String fileName) throws Exception {
+    //method reads text from file
+    // using start and end anchors as labels
+    public List<String> readByAnchors(String fileName, String startAnchor, String endAnchor) throws Exception {
 
         try (FileReader fr = new FileReader(fileName)) {
 
@@ -50,37 +50,12 @@ public class FileRead {
         Scanner read = new Scanner(fr);
         List<String> gotcha = new ArrayList<>();
         String rr = read.nextLine();
-        while (!rr.equals("-menu")){
+        while (!rr.equals(startAnchor)) {
             rr = read.nextLine();
         }
-        while (!rr.equals("--menu")) {
+        while (!rr.equals(endAnchor)) {
             rr = read.nextLine();
-            if(rr.equals("--menu")) break;
-            gotcha.add(rr);
-        }
-
-        fr.close();
-        return gotcha;
-    }
-
-    public List<String> readOrder(String fileName) throws Exception {
-
-        try (FileReader fr = new FileReader(fileName)) {
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        FileReader fr = new FileReader(fileName);
-        Scanner read = new Scanner(fr);
-        List<String> gotcha = new ArrayList<>();
-        String rr = read.nextLine();
-
-        while (!rr.equals("-orders")){
-            rr = read.nextLine();
-        }
-        while (!rr.equals("--orders")) {
-            rr = read.nextLine();
-            if(rr.equals("--orders")) break;
+            if (rr.equals(endAnchor)) break;
             gotcha.add(rr);
         }
 
