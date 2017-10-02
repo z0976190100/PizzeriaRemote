@@ -38,6 +38,7 @@ public class FileRead {
 
     }
 
+                                                                        //method reads menu text from file
     public List<String> readMenu(String fileName) throws Exception {
 
         try (FileReader fr = new FileReader(fileName)) {
