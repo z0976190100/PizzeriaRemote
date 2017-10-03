@@ -37,6 +37,9 @@ public class Main {
 
         System.out.println(first.routSeeker("[5;3]", first.cityRoutes));
 
+        Dijkstra dijkstra1 = new Dijkstra();
+        dijkstra1.setAltCostIndex(dijkstra1.x, dijkstra1.y);
+
 
     }
 
