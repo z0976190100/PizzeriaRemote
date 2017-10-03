@@ -1,10 +1,7 @@
 package Logic;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
@@ -20,6 +17,19 @@ String fileName = "C://Users/admin/OneDrive/codeacademy/IdeaProjects/a-level/Piz
                     = new ArrayList<>(ff.readByAnchors(fileName,
                     "-orders", "--orders"));
             System.out.println(order);
+
+            List<String> map
+                    = new ArrayList<>(ff.readByAnchors(fileName,
+                    "-map", "--map"));
+            System.out.println(map);
+
+            Dijkstra first  = new Dijkstra();
+            Map firstNeighbors;
+            firstNeighbors = first.getNeighbors(map);
+            System.out.println(firstNeighbors.keySet());
+
+
+
 
         }
 
