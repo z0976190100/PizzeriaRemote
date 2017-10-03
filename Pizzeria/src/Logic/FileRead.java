@@ -39,7 +39,7 @@ public class FileRead {
 
     //method reads text from file
     // using start and end anchors as labels
-    public List<String> readByAnchors(String fileName, String startAnchor, String endAnchor) throws Exception {
+    public List<String> readByAnchors(String fileName, String anchor) throws Exception {
 
         try (FileReader fr = new FileReader(fileName)) {
 
@@ -50,18 +50,22 @@ public class FileRead {
         Scanner read = new Scanner(fr);
         List<String> gotcha = new ArrayList<>();
         String rr = read.nextLine();
-        while (!rr.equals(startAnchor)) {
+
+        while (!rr.equals("-" + anchor)) {
             rr = read.nextLine();
         }
-        while (!rr.equals(endAnchor)) {
+
+        while (!rr.equals("--" + anchor)) {
             rr = read.nextLine();
-            if (rr.equals(endAnchor)) break;
+            if (rr.equals("--" + anchor)) break;
             gotcha.add(rr);
         }
 
         fr.close();
         return gotcha;
     }
+
+
 }
 
 
