@@ -1,9 +1,8 @@
 package Logic;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import javafx.collections.transformation.SortedList;
+
+import java.util.*;
 
 public class Dijkstra {
 
@@ -51,4 +50,71 @@ public class Dijkstra {
         }
 
     }
+
+String rout = "";
+    int  shortestRoute(Node start, Node finish) {
+
+      /*  List<String> nodesX = new ArrayList<>();
+        List<String> nodesY = new ArrayList<>();
+        List<Integer> roadsLength = new ArrayList<>(); // roads between neighbor nodes;
+        Map<String , Integer> nodeCost = new HashMap<>();
+        String startNode;
+
+
+        for(int i = 0; i < roadsLength.size(); i++) {
+            if(roadsLength.get(i) != 999) {
+                startNode = nodesX.get(roadsLength.get(i));
+                nodeCost.put(nodesY.get(i), nodeCost.get(nodesY.get(i)) + roadsLength.get(i));
+                }
+        }
+
+      */
+
+        // cost - length from starting node to THIS node in THIS route
+        // Map neighbours is (adjacent node = length from THIS node)
+        int[] costing = new int[start.neighbours.size()];// array for sorting costs
+        int index = 0;
+        System.out.println("now start is "  + start.name);
+        for (Node checkNode : start.neighbours.keySet()) {
+
+            if (finish.name.equals(checkNode.name)) {
+                checkNode.cost = start.neighbours.get(checkNode);
+                return checkNode.cost;
+            }
+            if (checkNode.visited) {continue;}
+            else {
+                System.out.println("visiting node" + checkNode.name);
+                checkNode.cost = start.cost + start.neighbours.get(checkNode);
+                costing[index] = checkNode.cost;
+                index++;
+                System.out.println("setting cost" + checkNode.cost+ " for rout from " + start.name );
+
+            }
+        }
+
+        Arrays.sort(costing);
+        index = 0;
+        for (int n: costing
+             ) {
+            if (n == 0) index++;
+        }
+
+        System.out.println("sorting is done." + Arrays.toString(costing));
+        for (Node nextNode : start.neighbours.keySet()
+                ) {
+            if (costing[index] == nextNode.cost) {
+                System.out.println(costing[0] + "-------------" + nextNode.name);
+                start.visited = true;
+                rout += nextNode.name;
+                System.out.println("rout now is " + rout);
+                shortestRoute(nextNode, finish);
+            }
+        }
+
+        return finish.cost;
+    }
+
+
 }
+
+

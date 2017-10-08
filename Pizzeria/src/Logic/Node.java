@@ -1,30 +1,36 @@
 package Logic;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Node {
 
     String name;
-    int cost;
-    int roadLength;
+    int cost = 0;
     boolean visited;
+    String neighboursSt;
     Map<Node, Integer> neighbours = new HashMap<>();
 
-    Node(String nam, int roadLeng){
+    Node(String nam, String neigh) {
         this.name = nam;
-        this.roadLength = roadLeng;
+        //this.roadLength = roadLeng;
         this.visited = false;
+        this.neighboursSt = neigh;
     }
 
-    void setCost(int cos){
-        this.cost = cos;
-    }
 
-    void setNeighbours(Node neigh, int leng) {
-        this.neighbours.put(neigh, leng);
+    void setNeighboursSt(List<Node> allNod) {
+        String[] result = this.neighboursSt.split(";");
+        for (String s : result
+                ) {
+            String[] res = s.split(",");
+            for (Node n : allNod
+                    ) {
+                if (n.name.equals(res[0])) {
+                    this.neighbours.put(n, Integer.parseInt(res[1]));
+                }
+
+            }
+        }
     }
 
 }

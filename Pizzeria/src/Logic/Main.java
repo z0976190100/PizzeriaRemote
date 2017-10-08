@@ -20,13 +20,23 @@ public class Main {
                 = new ArrayList<>(ff.readByAnchors(fileName, "map"));
         System.out.println(map);
 
-        List<String> routes
-                = new ArrayList<>(ff.readByAnchors(fileName, "routes"));
-        System.out.println("list of possible routes: \n" + routes);
+        CityMap kharkiv = new CityMap(map);
+        for (Node n: kharkiv.allNodes
+             ) {
+            System.out.println("Node : " + n.name);
+            System.out.println("neighbours : " + n.neighbours);
+        }
 
-        CityMap first = new CityMap();
 
-        Map firstNeighbors;
+        System.out.println(kharkiv.getRoute("[5", "[7"));
+
+       // List<String> routes
+          //      = new ArrayList<>(ff.readByAnchors(fileName, "routes"));
+      //  System.out.println("list of possible routes: \n" + routes);
+
+       // CityMap first = new CityMap();
+
+      /*  Map firstNeighbors;
         firstNeighbors = first.getNeighbors(map);
         System.out.println(firstNeighbors.keySet());
 
@@ -34,11 +44,15 @@ public class Main {
         firstCityRoutes = first.getCityRoutes(routes);
         System.out.println(firstCityRoutes);
 
+        
+
 
         System.out.println(first.routSeeker("[5;3]", first.cityRoutes));
 
         Dijkstra dijkstra1 = new Dijkstra();
         dijkstra1.setAltCostIndex(dijkstra1.x, dijkstra1.y);
+
+*/
 
 
     }
