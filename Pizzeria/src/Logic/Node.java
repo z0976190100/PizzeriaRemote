@@ -9,6 +9,8 @@ public class Node {
     boolean visited;
     String neighboursSt;
     Map<Node, Integer> neighbours = new HashMap<>();
+    Map<String, Integer> actingRoute = new HashMap<>();
+    Map<String, Integer> minRoute = new HashMap<>();
 
     Node(String nam, String neigh) {
         this.name = nam;

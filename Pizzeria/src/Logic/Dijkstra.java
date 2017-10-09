@@ -51,8 +51,9 @@ public class Dijkstra {
 
     }
 
-String rout = "";
-    int  shortestRoute(Node start, Node finish) {
+    String rout = "";
+
+    int shortestRoute(Node start, Node finish) {
 
       /*  List<String> nodesX = new ArrayList<>();
         List<String> nodesY = new ArrayList<>();
@@ -74,25 +75,33 @@ String rout = "";
         // Map neighbours is (adjacent node = length from THIS node)
         int[] costing = new int[start.neighbours.size()];// array for sorting costs
         int index = 0;
-        System.out.println("now start is "  + start.name);
-        for (Node checkNode : start.neighbours.keySet()) {
+        System.out.println("now start is " + start.name);
 
-            if (finish.name.equals(checkNode.name)) {
-                checkNode.cost = start.neighbours.get(checkNode);
-                return checkNode.cost;
-            }
-            if (checkNode.visited) {continue;}
-            else {
-                System.out.println("visiting node" + checkNode.name);
-                checkNode.cost = start.cost + start.neighbours.get(checkNode);
-                costing[index] = checkNode.cost;
-                index++;
-                System.out.println("setting cost" + checkNode.cost+ " for rout from " + start.name );
-
-            }
+        if (start.neighbours.containsKey(finish)) {
+            finish.cost = start.neighbours.get(finish);
+            return finish.cost;
         }
 
-        Arrays.sort(costing);
+        for (Node checkNode : start.neighbours.keySet()) {
+
+            if (checkNode.visited) {
+                continue;
+            }
+
+            System.out.println("visiting node" + checkNode.name);
+            checkNode.cost = start.cost + start.neighbours.get(checkNode);
+               /* costing[index] = checkNode.cost;
+                index++;*/
+            System.out.println("setting cost" + checkNode.cost + " for rout from " + start.name);
+            checkNode.visited = true;
+            shortestRoute(checkNode, finish);
+
+        }
+
+
+
+
+       /* Arrays.sort(costing);
         index = 0;
         for (int n: costing
              ) {
@@ -103,17 +112,39 @@ String rout = "";
         for (Node nextNode : start.neighbours.keySet()
                 ) {
             if (costing[index] == nextNode.cost) {
-                System.out.println(costing[0] + "-------------" + nextNode.name);
+                System.out.println(costing[index] + "-------------" + nextNode.name);
                 start.visited = true;
                 rout += nextNode.name;
                 System.out.println("rout now is " + rout);
                 shortestRoute(nextNode, finish);
-            }
-        }
+            }*/
+
 
         return finish.cost;
     }
 
+
+    int shortestRouteAlter(Node start, Node finish) {
+        System.err.println(start.visited);
+        System.err.println(finish.visited);
+        if (start.neighbours.containsKey(finish)) {
+            start.visited = true;
+            finish.cost = start.cost + start.neighbours.get(finish);
+            return finish.cost ;
+        }
+
+            Set<Node> nSet = start.neighbours.keySet();
+            for (Node startNeighbour : nSet) {
+                if (!startNeighbour.visited) {
+                    startNeighbour.visited = true;
+                    startNeighbour.cost = start.cost + start.neighbours.get(startNeighbour);
+                    this.shortestRouteAlter(startNeighbour, finish);
+                }
+                continue;
+            }
+
+        return finish.cost;
+    }
 
 }
 

@@ -53,7 +53,7 @@ public class CityMap {
 */
 
     int getRoute(String node1, String node2) {
-        int lenght = 0;
+        int length = 0;
         for (Node n : this.allNodes
                 ) {
             if (n.name.equals(node1)) {
@@ -61,12 +61,12 @@ public class CityMap {
                         ) {
                     if (d.name.equals(node2)) {
                         Dijkstra rout = new Dijkstra();
-                       lenght = rout.shortestRoute(n, d);
+                       length = rout.shortestRouteAlter(n, d);
                     }
                 }
             }
         }
-        return lenght;
+        return length;
     }
 
 }

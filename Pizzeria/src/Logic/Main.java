@@ -21,20 +21,23 @@ public class Main {
         System.out.println(map);
 
         CityMap kharkiv = new CityMap(map);
-        for (Node n: kharkiv.allNodes
-             ) {
+        for (Node n : kharkiv.allNodes
+                ) {
             System.out.println("Node : " + n.name);
             System.out.println("neighbours : " + n.neighbours);
         }
 
+        String start = "[4";
+        String finish = "[5 ";
+        System.out.println("the length of rout " + start + " to " + finish + " is:"
+                + kharkiv.getRoute(start, finish));
 
-        System.out.println(kharkiv.getRoute("[5", "[7"));
 
-       // List<String> routes
-          //      = new ArrayList<>(ff.readByAnchors(fileName, "routes"));
-      //  System.out.println("list of possible routes: \n" + routes);
+        // List<String> routes
+        //      = new ArrayList<>(ff.readByAnchors(fileName, "routes"));
+        //  System.out.println("list of possible routes: \n" + routes);
 
-       // CityMap first = new CityMap();
+        // CityMap first = new CityMap();
 
       /*  Map firstNeighbors;
         firstNeighbors = first.getNeighbors(map);
