@@ -14,7 +14,6 @@ public class Node {
 
     Node(String nam, String neigh) {
         this.name = nam;
-        //this.roadLength = roadLeng;
         this.visited = false;
         this.neighboursSt = neigh;
     }

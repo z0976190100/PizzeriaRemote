@@ -33,29 +33,6 @@ public class Main {
                 + kharkiv.getRoute(start, finish));
 
 
-        // List<String> routes
-        //      = new ArrayList<>(ff.readByAnchors(fileName, "routes"));
-        //  System.out.println("list of possible routes: \n" + routes);
-
-        // CityMap first = new CityMap();
-
-      /*  Map firstNeighbors;
-        firstNeighbors = first.getNeighbors(map);
-        System.out.println(firstNeighbors.keySet());
-
-        Map firstCityRoutes;
-        firstCityRoutes = first.getCityRoutes(routes);
-        System.out.println(firstCityRoutes);
-
-        
-
-
-        System.out.println(first.routSeeker("[5;3]", first.cityRoutes));
-
-        Dijkstra dijkstra1 = new Dijkstra();
-        dijkstra1.setAltCostIndex(dijkstra1.x, dijkstra1.y);
-
-*/
 
 
     }

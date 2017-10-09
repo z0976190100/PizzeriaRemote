@@ -9,22 +9,9 @@ public class CityMap {
     //?set for comparing incoming route with existing ones;
     //to calculate cost of incoming rout comparing pairs from 'cityRouts', if not exist, calculate by algorithm
 
-    /*Map<String, Integer> neighbors = new HashMap<>();
-    Map<String,String> cityRoutes = new HashMap<>();
-    Map<String, String> routCost = new HashMap<>(); */
+
     List<Node> allNodes = new LinkedList<>();
-   /*
-    Map getNeighbors (List<String> entry) {
 
-        for (String str : entry) {
-           String[] result = str.split(" ");
-            System.out.println(result[0]);
-            System.out.println(result[1]);
-            this.neighbors.put(result[0], Integer.parseInt(result[1]));
-
-        }
-        return this.neighbors;
-    } */
 
     CityMap(List<String> nodes) {
 
@@ -39,18 +26,6 @@ public class CityMap {
         }
     }
 
-/*
-
-    int routSeeker(String routeToSeek, Map posRoutes ) {
-        int cost;
-
-        String result =(String) posRoutes.get(routeToSeek);
-        String []resultInt = result.split("=");
-        cost = Integer.parseInt(resultInt[1]);
-
-        return cost;
-    }
-*/
 
     int getRoute(String node1, String node2) {
         int length = 0;
