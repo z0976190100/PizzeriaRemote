@@ -21,12 +21,12 @@ public class Main {
         System.out.println(map);
 
         CityMap kharkiv = new CityMap(map);
-        for (Node n : kharkiv.allNodes
+        /*for (Node n : kharkiv.allNodes
                 ) {
             System.out.println("Node : " + n.name);
             System.out.println("neighbours : " + n.neighbours);
         }
-
+*/
         String start = "[2";
         String finish = "[9";
         System.out.println("the length of rout " + start + " to " + finish + " is:"

@@ -10,6 +10,7 @@ public class Dijkstra {
     List<Integer> y = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13));
     int[][] costIndex = new int[x.size()][y.size()];
 
+    List<Integer> finishCosts = new LinkedList<>();
 
     void setCostIndex(List x, List y) {
         Scanner sc = new Scanner(System.in);
@@ -80,7 +81,7 @@ public class Dijkstra {
         return finish.cost;
     }
 
-List<Integer> finishCosts = new LinkedList<>();
+
    List <Integer> shortestRouteAlter( Node start, Node finish) {
         if (start.neighbours.containsKey(finish)) {
             //start.visited = true;
