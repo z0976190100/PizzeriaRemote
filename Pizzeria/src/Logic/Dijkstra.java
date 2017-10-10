@@ -54,9 +54,6 @@ public class Dijkstra {
     String rout = "";
 
     int shortestRoute(Node start, Node finish) {
-
-
-
         // cost - length from starting node to THIS node in THIS route
         // Map neighbours is (adjacent node = length from THIS node)
         int[] costing = new int[start.neighbours.size()];// array for sorting costs
@@ -83,27 +80,26 @@ public class Dijkstra {
         return finish.cost;
     }
 
-
-    int shortestRouteAlter(Node start, Node finish) {
-        System.err.println(start.visited);
-        System.err.println(finish.visited);
+List<Integer> finishCosts = new LinkedList<>();
+   List <Integer> shortestRouteAlter( Node start, Node finish) {
         if (start.neighbours.containsKey(finish)) {
-            start.visited = true;
+            //start.visited = true;
             finish.cost = start.cost + start.neighbours.get(finish);
-            return finish.cost ;
-        }
+            finishCosts.add(finish.cost);
 
+            return finishCosts;
+        }
             Set<Node> nSet = start.neighbours.keySet();
+
             for (Node startNeighbour : nSet) {
-                if (!startNeighbour.visited) {
-                    startNeighbour.visited = true;
+                if (!startNeighbour.visited ) {
+                    start.visited = true;
                     startNeighbour.cost = start.cost + start.neighbours.get(startNeighbour);
                     this.shortestRouteAlter(startNeighbour, finish);
                 }
-                continue;
             }
-
-        return finish.cost;
+      finishCosts.add(9999);
+        return finishCosts;
     }
 
 }

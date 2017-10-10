@@ -27,8 +27,8 @@ public class Main {
             System.out.println("neighbours : " + n.neighbours);
         }
 
-        String start = "[4";
-        String finish = "[5 ";
+        String start = "[2";
+        String finish = "[9";
         System.out.println("the length of rout " + start + " to " + finish + " is:"
                 + kharkiv.getRoute(start, finish));
 

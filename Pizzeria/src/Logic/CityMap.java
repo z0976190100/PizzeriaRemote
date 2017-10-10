@@ -36,11 +36,17 @@ public class CityMap {
                         ) {
                     if (d.name.equals(node2)) {
                         Dijkstra rout = new Dijkstra();
-                       length = rout.shortestRouteAlter(n, d);
+
+                        List<Integer> finishCosts = new LinkedList<>(rout.shortestRouteAlter(n, d));
+                        System.out.println("not sorted : -----------" + finishCosts);
+                        Collections.sort(finishCosts);
+                        System.out.println("sorted:   " + finishCosts);
+                       length =  finishCosts.get(0);
                     }
                 }
             }
         }
+
         return length;
     }
 
