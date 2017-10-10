@@ -6,8 +6,8 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         FileRead ff = new FileRead();
-        String fileName = //"C://Users/admin/OneDrive/codeacademy/IdeaProjects/a-level/PizzeriaGit/Pizzeria/src/Logic/Pizzeria.txt";
-        "C://Users/dell/OneDrive/codeacademy/IdeaProjects/a-level/PizzeriaGit/Pizzeria/src/Logic/Pizzeria.txt";
+        String fileName = "C://Users/admin/OneDrive/codeacademy/IdeaProjects/a-level/PizzeriaGit/Pizzeria/src/Logic/Pizzeria.txt";
+       // "C://Users/dell/OneDrive/codeacademy/IdeaProjects/a-level/PizzeriaGit/Pizzeria/src/Logic/Pizzeria.txt";
        /* List<String> menu
                 = new ArrayList<>(ff.readByAnchors(fileName, "menu"));
         System.out.println(menu);

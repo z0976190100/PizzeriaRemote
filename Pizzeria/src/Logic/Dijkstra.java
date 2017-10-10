@@ -6,13 +6,36 @@ import java.util.*;
 
 public class Dijkstra {
 
-    List<Integer> x = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13));
+  /*  List<Integer> x = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13));
     List<Integer> y = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13));
     int[][] costIndex = new int[x.size()][y.size()];
-
+*/
     List<Integer> finishCosts = new LinkedList<>();
 
-    void setCostIndex(List x, List y) {
+    List <Integer> shortestRouteAlter( Node start, Node finish) {
+        if (start.neighbours.containsKey(finish)) {
+            //start.visited = true;
+            finish.cost = start.cost + start.neighbours.get(finish);
+            finishCosts.add(finish.cost);
+
+            return finishCosts;
+        }
+
+        Set<Node> nSet = start.neighbours.keySet();
+
+        for (Node startNeighbour : nSet) {
+            if (!startNeighbour.visited ) {
+                start.visited = true;
+                startNeighbour.cost = start.cost + start.neighbours.get(startNeighbour);
+                this.shortestRouteAlter(startNeighbour, finish);
+            }
+        }
+        finishCosts.add(9999);
+        return finishCosts;
+    }
+
+
+   /* void setCostIndex(List x, List y) {
         Scanner sc = new Scanner(System.in);
         for (int i = 1; i < this.x.size(); i++) {
             for (int j = 1; j < this.y.size(); j++) {
@@ -81,27 +104,8 @@ public class Dijkstra {
         return finish.cost;
     }
 
+*/
 
-   List <Integer> shortestRouteAlter( Node start, Node finish) {
-        if (start.neighbours.containsKey(finish)) {
-            //start.visited = true;
-            finish.cost = start.cost + start.neighbours.get(finish);
-            finishCosts.add(finish.cost);
-
-            return finishCosts;
-        }
-            Set<Node> nSet = start.neighbours.keySet();
-
-            for (Node startNeighbour : nSet) {
-                if (!startNeighbour.visited ) {
-                    start.visited = true;
-                    startNeighbour.cost = start.cost + start.neighbours.get(startNeighbour);
-                    this.shortestRouteAlter(startNeighbour, finish);
-                }
-            }
-      finishCosts.add(9999);
-        return finishCosts;
-    }
 
 }
 

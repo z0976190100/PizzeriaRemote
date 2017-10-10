@@ -9,34 +9,6 @@ import java.util.Scanner;
 
 public class FileRead {
 
-
-    public static void myFileWriter(String fileName, String userInput) throws Exception {
-
-        try (FileWriter fw = new FileWriter(fileName, false)) {
-            fw.write(userInput);
-            fw.close();
-
-        } catch (IOException ex) {
-            System.out.println("OOOOOpS!" + ex.getMessage());
-        }
-    }
-
-    public static String myFileReader(String fileName) throws Exception {
-
-        try (FileReader fr = new FileReader(fileName)) {
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        FileReader fr = new FileReader(fileName);
-        Scanner read = new Scanner(fr);
-        String gotcha = read.nextLine();
-        fr.close();
-        return gotcha;
-
-    }
-
     //method reads text from file
     // using start and end anchors as labels
     public List<String> readByAnchors(String fileName, String anchor) throws Exception {
@@ -64,6 +36,37 @@ public class FileRead {
         fr.close();
         return gotcha;
     }
+
+
+
+
+   /* public static void myFileWriter(String fileName, String userInput) throws Exception {
+
+        try (FileWriter fw = new FileWriter(fileName, false)) {
+            fw.write(userInput);
+            fw.close();
+
+        } catch (IOException ex) {
+            System.out.println("OOOOOpS!" + ex.getMessage());
+        }
+    }
+
+    public static String myFileReader(String fileName) throws Exception {
+
+        try (FileReader fr = new FileReader(fileName)) {
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        FileReader fr = new FileReader(fileName);
+        Scanner read = new Scanner(fr);
+        String gotcha = read.nextLine();
+        fr.close();
+        return gotcha;
+
+    }
+*/
 
 
 }

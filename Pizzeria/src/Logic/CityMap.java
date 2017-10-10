@@ -3,7 +3,7 @@ package Logic;
 import java.util.*;
 
 public class CityMap {
-
+    //old version comments- DO NOT READ 'EM!
     // map<String, Integer> 'neighbours' of matches between neighbour nodes and cost of match [node1;node2]=cost
     //map<String, String> 'cityRouts' of routes [node1;node10]=[[node1;node n;node10]=cost]
     //?set for comparing incoming route with existing ones;
@@ -18,7 +18,6 @@ public class CityMap {
         for (String str : nodes) {
             String[] result = str.split(" ");
             this.allNodes.add(new Node(result[0], result[1]));
-
         }
         for (Node x : this.allNodes
                 ) {
@@ -36,11 +35,10 @@ public class CityMap {
                         ) {
                     if (d.name.equals(node2)) {
                         Dijkstra rout = new Dijkstra();
-
                         List<Integer> finishCosts = new LinkedList<>(rout.shortestRouteAlter(n, d));
-                        System.out.println("not sorted : -----------" + finishCosts);
+                                    //System.out.println("not sorted : -----------" + finishCosts);
                         Collections.sort(finishCosts);
-                        System.out.println("sorted:   " + finishCosts);
+                                    //System.out.println("sorted:   " + finishCosts);
                        length =  finishCosts.get(0);
                     }
                 }
