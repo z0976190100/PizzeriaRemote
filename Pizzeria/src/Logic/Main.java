@@ -32,9 +32,6 @@ public class Main {
         System.out.println("the length of rout " + start + " to " + finish + " is:"
                 + kharkiv.getRoute(start, finish));
 
-
-
-
     }
 
 }

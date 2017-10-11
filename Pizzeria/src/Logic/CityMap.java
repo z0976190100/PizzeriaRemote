@@ -28,18 +28,16 @@ public class CityMap {
 
     int getRoute(String node1, String node2) {
         int length = 0;
-        for (Node n : this.allNodes
-                ) {
+        for (Node n : this.allNodes ) {
             if (n.name.equals(node1)) {
-                for (Node d : this.allNodes
-                        ) {
+                for (Node d : this.allNodes) {
                     if (d.name.equals(node2)) {
                         Dijkstra rout = new Dijkstra();
                         List<Integer> finishCosts = new LinkedList<>(rout.shortestRouteAlter(n, d));
-                                    //System.out.println("not sorted : -----------" + finishCosts);
+                        //System.out.println("not sorted : -----------" + finishCosts);
                         Collections.sort(finishCosts);
-                                    //System.out.println("sorted:   " + finishCosts);
-                       length =  finishCosts.get(0);
+                        //System.out.println("sorted:   " + finishCosts);
+                        length = finishCosts.get(0);
                     }
                 }
             }
