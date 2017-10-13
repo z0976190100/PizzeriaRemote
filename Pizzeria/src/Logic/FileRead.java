@@ -12,29 +12,28 @@ public class FileRead {
     //method reads text from file
     // using start and end anchors as labels
     public List<String> readByAnchors(String fileName, String anchor) throws Exception {
+        List<String> gotcha = new ArrayList<>();
 
         try (FileReader fr = new FileReader(fileName)) {
+            Scanner read = new Scanner(fr);
+            String rr = read.nextLine();
+
+            while (!rr.equals("-" + anchor)) {
+                rr = read.nextLine();
+            }
+
+            while (!rr.equals("--" + anchor)) {
+                rr = read.nextLine();
+                if (rr.equals("--" + anchor)) break;
+                gotcha.add(rr);
+            }
+            fr.close();
+            return gotcha;
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-        FileReader fr = new FileReader(fileName);
-        Scanner read = new Scanner(fr);
-        List<String> gotcha = new ArrayList<>();
-        String rr = read.nextLine();
-
-        while (!rr.equals("-" + anchor)) {
-            rr = read.nextLine();
-        }
-
-        while (!rr.equals("--" + anchor)) {
-            rr = read.nextLine();
-            if (rr.equals("--" + anchor)) break;
-            gotcha.add(rr);
-        }
-
-        fr.close();
-        return gotcha;
+       return gotcha;
     }
 
 

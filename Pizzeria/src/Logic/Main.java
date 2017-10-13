@@ -17,7 +17,9 @@ public class Main {
         System.out.println(order);
 */
         List<String> map
-                = new ArrayList<>(ff.readByAnchors(fileName, "map"));
+                = new ArrayList<>(/*Arrays.asList("[1 [2,3;[6,7", "[2 [5,4;[1,3", "[3 [5,4;[9,6", "[4 [5,10",
+                "[5 [7,5;[3,4;[4,10;[2,4", "[6 [10,5;[1,7", "[7 [5,5;[10,7;[8,4", "[8 [7,4;[9,7", "[9 [3,6;[8,7", "[10 [6,5;[7,7"));*/
+                        ff.readByAnchors(fileName, "map"));
         System.out.println(map);
 
         CityMap kharkiv = new CityMap(map);
@@ -28,7 +30,7 @@ public class Main {
         }
 */
         String start = "[2";
-        String finish = "[9";
+        String finish = "[7";
         System.out.println("the length of rout " + start + " to " + finish + " is:"
                 + kharkiv.getRoute(start, finish));
 
