@@ -9,7 +9,7 @@ public class OrderManager {
 
     static int orderId = 1;
     static Map<Integer, Integer> courierOrder = new HashMap<>();
-    Map<Integer, String> orderAddress = new HashMap<>();// temporary contains only order id and address
+    static volatile Map<Integer, String> orderAddress = new HashMap<>();// temporary contains only order id and address
     static Map<Integer, String> orderDone = new HashMap<>();
     Map<Integer, Boolean> couriersBusy = new HashMap<>(); // includes couriersBusy id and if he is avaliable for order
 
@@ -24,13 +24,13 @@ public class OrderManager {
 
         for (String str : order) {
 
-            this.orderAddress.put(orderId, str.substring(0, 2));
+            orderAddress.put(orderId, str.substring(0, 2));
             orderId++;
         }
 
-        System.err.println("orderAdresses:" + this.orderAddress);
+        System.err.println("orderAdresses:" + orderAddress);
 
-        this.chooseCourier(this.orderAddress);
+        this.chooseCourier(orderAddress);
 
         String done = "done";
         return done;
@@ -39,18 +39,28 @@ public class OrderManager {
 
 
     public void chooseCourier(Map<Integer, String> ordAddress) throws Exception {
-        for (Integer ordId : ordAddress.keySet()) {
-            for (Courier Courie : couriersTable.keySet()) {
-                if (!Courie.busy) {
-                    Courie.busy = true;
-                    courierOrder.put(Courie.itsID, ordId);
-                    System.err.println("adress is" + ordAddress.get(ordId));
-                    this.sendCourier(Courie, ordAddress.remove(ordId)); // !!!!!!!!!!!! remove instead get !!!!!!!!!!!!!
-                    break;
+        while (true){
+            for (Integer ordId : ordAddress.keySet()) {
+                if(ordAddress.get(ordId).equals("5")){
+                    System.err.println("now order list is :" + ordAddress);
+                    continue;
                 }
+                for (Courier Courie : couriersTable.keySet()) {
+                    System.err.println("trying to throw order no  " + ordId+ " to " + Courie.name);
+                    if (!Courie.busy) {
+                        Courie.busy = true;
+                        courierOrder.put(Courie.itsID, ordId);
+                        System.err.println(Courie.name+ " takes " + courierOrder.get(Courie.itsID));
+                        System.err.println("adress is" + ordAddress.get(ordId));
+                        String temp = ordAddress.get(ordId);
+                        ordAddress.put(ordId, "5"); // "5" means that now this order is in work
+                        this.sendCourier(Courie, temp);
+                        break;
+                    }
+                }
+                //  System.err.println("All couriers are busy now!"); // ????????????
+                //this.chooseCourier(this.orderAddress);
             }
-           System.err.println("All couriers are busy now!"); // ????????????
-           this.chooseCourier(this.orderAddress);
         }
     }
 

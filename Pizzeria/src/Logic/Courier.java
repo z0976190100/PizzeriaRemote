@@ -27,17 +27,18 @@ public class Courier extends Thread {
     }
 
     public void run() {
-        System.err.println("order no "+this.executOrder);
+        System.err.println("order no "+ this.executOrder);
        try {
             sleep(this.travelingLength * 2 * 100);
         }catch (InterruptedException ie) {}
         this.executingOrder(executOrder);
-
+interrupt();
 
     }
 // removes order id entry from orderAddress map;
     private void executingOrder(int ordId) {
-        System.err.println(orderDone.put(ordId, "done"));
+        orderDone.put(ordId, "done");
+        System.err.println("this order no. " + ordId + " is  " + orderDone.get(ordId));
         this.busy = false;
     }
 
