@@ -11,7 +11,7 @@ public class FileRead {
 
     //method reads text from file
     // using start and end anchors as labels
-    public List<String> readByAnchors(String fileName, String anchor) throws Exception {
+    public static List<String> readByAnchors(String fileName, String anchor) throws Exception {
         List<String> gotcha = new ArrayList<>();
 
         try (FileReader fr = new FileReader(fileName)) {

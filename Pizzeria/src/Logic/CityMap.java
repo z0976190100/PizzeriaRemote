@@ -10,33 +10,33 @@ public class CityMap {
     //to calculate cost of incoming rout comparing pairs from 'cityRouts', if not exist, calculate by algorithm
 
 
-    List<Node> allNodes = new LinkedList<>();
+   static List<Node> allNodes = new LinkedList<>();
 
 
     CityMap(List<String> nodes) {
 
         for (String str : nodes) {
             String[] result = str.split(" ");
-            this.allNodes.add(new Node(result[0], result[1]));
+            allNodes.add(new Node(result[0], result[1]));
         }
-        for (Node x : this.allNodes
+        for (Node x : allNodes
                 ) {
-            x.setNeighboursSt(this.allNodes);
+            x.setNeighboursSt(allNodes);
         }
     }
 
 
-    int getRoute(String node1, String node2) {
+    public static int getRoute(String node1, String node2) {
         int length = 0;
-        for (Node n : this.allNodes ) {
+        for (Node n : allNodes ) {
             if (n.name.equals(node1)) {
-                for (Node d : this.allNodes) {
+                for (Node d : allNodes) {
                     if (d.name.equals(node2)) {
                         Dijkstra rout = new Dijkstra();
                         List<Integer> finishCosts = new LinkedList<>(rout.shortestRouteAlter(n, d));
-                        System.out.println("not sorted : -----------" + finishCosts);
+                        System.err.println("not sorted : -----------" + finishCosts);
                         Collections.sort(finishCosts);
-                        System.out.println("sorted:   " + finishCosts);
+                        System.err.println("sorted:   " + finishCosts);
                         length = finishCosts.get(0);
                     }
                 }

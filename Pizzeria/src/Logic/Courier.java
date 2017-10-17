@@ -3,19 +3,20 @@ package Logic;
 import java.util.HashMap;
 import java.util.Map;
 
-import static Logic.Manager.orderDoneString;
-import static Logic.Manager.orderString;
+import static Logic.OrderManager.orderDone;
 
-public class Courier extends Thread {
+public class Courier  {
 
     static int id = 1;
+    public static Map<Courier, Integer> couriersTable = new HashMap<>();
+
 
     int itsID;
     int executOrder = 0;
     String name;
     boolean busy;
     int travelingLength;
-    public static Map<Courier, Integer> couriersTable = new HashMap<>();
+
 
     Courier(String nam) {
         this.itsID = id++;
@@ -29,9 +30,9 @@ public class Courier extends Thread {
         this.executingOrder(executOrder);
 
     }
-// removes order id entrie from orderString map;
+// removes order id entry from orderAddress map;
     private void executingOrder(int ordId) {
-        System.err.println(orderDoneString.put(ordId, "done"));
+        System.err.println(orderDone.put(ordId, "done"));
 
     }
 
