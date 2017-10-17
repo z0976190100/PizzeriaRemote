@@ -34,9 +34,9 @@ public class CityMap {
                     if (d.name.equals(node2)) {
                         Dijkstra rout = new Dijkstra();
                         List<Integer> finishCosts = new LinkedList<>(rout.shortestRouteAlter(n, d));
-                        System.err.println("not sorted : -----------" + finishCosts);
+                        //System.err.println("not sorted : " + finishCosts);
                         Collections.sort(finishCosts);
-                        System.err.println("sorted:   " + finishCosts);
+                        //System.err.println("sorted:   " + finishCosts);
                         length = finishCosts.get(0);
                     }
                 }

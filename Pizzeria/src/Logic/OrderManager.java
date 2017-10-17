@@ -15,7 +15,7 @@ public class OrderManager {
 
 
     void couriersHiring() {  // creates Courier instances
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < 3; i++) {
             new Courier("Servant no." + Integer.toString(i));
         }
     }
@@ -42,26 +42,28 @@ public class OrderManager {
         for (Integer ordId : ordAddress.keySet()) {
             for (Courier Courie : couriersTable.keySet()) {
                 if (!Courie.busy) {
+                    Courie.busy = true;
                     courierOrder.put(Courie.itsID, ordId);
                     System.err.println("adress is" + ordAddress.get(ordId));
-                    this.sendCourier(Courie, ordAddress.get(ordId));
-break;
+                    this.sendCourier(Courie, ordAddress.remove(ordId)); // !!!!!!!!!!!! remove instead get !!!!!!!!!!!!!
+                    break;
                 }
             }
+           System.err.println("All couriers are busy now!"); // ????????????
+           this.chooseCourier(this.orderAddress);
         }
     }
 
-    public String sendCourier(Courier Courie, String ordAdres) throws Exception {
+    public void sendCourier(Courier Courie, String ordAdres) throws Exception {
 
         Courie.travelingLength = (getRoute("[5", ordAdres)); // calculating length of route
-       // Courie.busy = true;
+
         Courie.executOrder = courierOrder.get(Courie.itsID);
-        System.err.println("____________" + Courie.name + "goes for order nombre "+ Courie.executOrder + " during "
+        System.err.println("____________" + Courie.name + "goes for order nombre " + Courie.executOrder + " during "
                 + Courie.travelingLength);
-        return ordAdres;
-        //Courie.start();
-        // Courie.sleep(Courie.travelingLength * 2 * 1000); // duration of executing of order
-       // Courie.busy = false;
+
+        Courie.start();
+
     }
 }
 

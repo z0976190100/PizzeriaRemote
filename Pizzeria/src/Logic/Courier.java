@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static Logic.OrderManager.orderDone;
+import static java.lang.Thread.sleep;
 
-public class Courier  {
+public class Courier extends Thread {
 
     static int id = 1;
     public static Map<Courier, Integer> couriersTable = new HashMap<>();
@@ -27,13 +28,17 @@ public class Courier  {
 
     public void run() {
         System.err.println("order no "+this.executOrder);
+       try {
+            sleep(this.travelingLength * 2 * 100);
+        }catch (InterruptedException ie) {}
         this.executingOrder(executOrder);
+
 
     }
 // removes order id entry from orderAddress map;
     private void executingOrder(int ordId) {
         System.err.println(orderDone.put(ordId, "done"));
-
+        this.busy = false;
     }
 
 }

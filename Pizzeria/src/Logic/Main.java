@@ -18,14 +18,15 @@ public class Main {
 
         List<String> order
                 = new ArrayList<>(readByAnchors(fileName, "orders"));
-        System.out.println(order);
+        //System.err.println(order);
 
         OrderManager man = new OrderManager();
 
         man.couriersHiring();
         CityMap kh = new CityMap(map);
         //System.out.println(couriersTable);
-        man.throwsOrder(order);
+        System.err.println(man.throwsOrder(order)) ;
+
         System.err.println("++"+ orderDone);
 
  /*String start = "[2";
