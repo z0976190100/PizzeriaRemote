@@ -22,24 +22,30 @@ public class Courier extends Thread {
     Courier(String nam) {
         this.itsID = id++;
         this.busy = false;
+        this.setName(nam);
         this.name = nam;
         couriersTable.put(this, this.itsID);
     }
 
     public void run() {
-        System.err.println("order no "+ this.executOrder);
-       try {
-            sleep(this.travelingLength * 2 * 100);
-        }catch (InterruptedException ie) {}
-        this.executingOrder(executOrder);
-interrupt();
+if(executOrder != 0) {
+    this.executingOrder();
+}
+
+        return;
 
     }
-// removes order id entry from orderAddress map;
-    private void executingOrder(int ordId) {
-        orderDone.put(ordId, "done");
-        System.err.println("this order no. " + ordId + " is  " + orderDone.get(ordId));
+
+    public void executingOrder() {
+        System.err.println("order no " + this.executOrder);
+        try {
+            sleep(this.travelingLength * 2 * 1000);
+        } catch (InterruptedException ie) {
+        }
+        orderDone.put(this.executOrder, "done");
+        System.err.println("this order no. " + this.executOrder + " is  " + orderDone.get(this.executOrder));
         this.busy = false;
-    }
+        return;
 
+    }
 }

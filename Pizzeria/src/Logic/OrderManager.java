@@ -4,6 +4,7 @@ import java.util.*;
 
 import static Logic.CityMap.getRoute;
 import static Logic.Courier.couriersTable;
+import static java.lang.Thread.sleep;
 
 public class OrderManager {
 
@@ -17,6 +18,9 @@ public class OrderManager {
     void couriersHiring() {  // creates Courier instances
         for (int i = 1; i < 3; i++) {
             new Courier("Servant no." + Integer.toString(i));
+        }
+        for (Courier C: couriersTable.keySet()) {
+            C.start();
         }
     }
 
@@ -72,10 +76,16 @@ public class OrderManager {
         System.err.println("____________" + Courie.name + "goes for order nombre " + Courie.executOrder + " during "
                 + Courie.travelingLength);
 
-        Courie.start();
-
+       /* while (!Courie.isInterrupted()) {
+            try {
+                sleep(1000);
+            }catch (InterruptedException ie) {}
+        }*/
+        //if(Courie.isAlive()) {
+            Courie.executingOrder();
+        }
     }
-}
+
 
 
 
