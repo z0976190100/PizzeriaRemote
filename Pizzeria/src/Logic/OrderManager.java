@@ -4,7 +4,7 @@ import java.util.*;
 
 import static Logic.CityMap.getRoute;
 import static Logic.Courier.couriersTable;
-import static java.lang.Thread.sleep;
+
 
 class OrderManager {
 
@@ -45,7 +45,7 @@ class OrderManager {
 
                     }
                     System.err.println("trying to throw order no  " + ordId + " to " + Courie.name);
-                    System.err.println(Courie.name + " is " + Courie.busy);
+                    System.err.println(Courie.name + " is busy: " + Courie.busy);
                     if (!Courie.busy) {
                         Courie.busy = true;
                         courierOrder.put(Courie.itsID, ordId);
