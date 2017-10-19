@@ -4,13 +4,13 @@ import javafx.collections.transformation.SortedList;
 
 import java.util.*;
 
-public class Dijkstra {
+class Dijkstra {
 
   /*  List<Integer> x = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13));
     List<Integer> y = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13));
     int[][] costIndex = new int[x.size()][y.size()];
 */
-    List<Integer> finishCosts = new LinkedList<>();
+    private List<Integer> finishCosts = new LinkedList<>();
 
     List <Integer> shortestRouteAlter( Node start, Node finish) {
         if (start.neighbours.containsKey(finish)) {

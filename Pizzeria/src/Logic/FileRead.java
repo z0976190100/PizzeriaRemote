@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileRead {
+class FileRead {
 
     //method reads text from file
     // using start and end anchors as labels
-    public static List<String> readByAnchors(String fileName, String anchor) throws Exception {
+    static List<String> readByAnchors(String fileName, String anchor) throws Exception {
         List<String> gotcha = new ArrayList<>();
 
         try (FileReader fr = new FileReader(fileName)) {
@@ -31,9 +31,9 @@ public class FileRead {
             return gotcha;
 
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            System.err.println(ex.getMessage());
         }
-       return gotcha;
+        return gotcha;
     }
 
 

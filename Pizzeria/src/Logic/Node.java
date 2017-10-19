@@ -2,12 +2,12 @@ package Logic;
 
 import java.util.*;
 
-public class Node {
+class Node {
 
     String name;
     int cost = 0;
     boolean visited;
-    String neighboursSt;
+    private String neighboursSt;
     Map<Node, Integer> neighbours = new HashMap<>();
      
     Node(String nam, String neigh) {
